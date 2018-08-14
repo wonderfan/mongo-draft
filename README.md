@@ -29,3 +29,20 @@ db.createCollection(collectionName);
 show collections;
 db.collectionName.drop();
 ```
+
+### create user
+
+```bash
+use test
+db.createUser(
+   {
+     user: "admin",
+     pwd: "password",
+     roles:
+       [
+         { role: "readWrite", db: "test" },
+         "dbAdmin"
+       ]
+   }
+)
+```

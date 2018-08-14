@@ -20,3 +20,12 @@ use test;
 db;
 db.dropDatabase();
 ```
+
+### collection administration
+
+```bash
+use test;
+db.createCollection(collectionName);
+show collections;
+db.collectionName.drop();
+```

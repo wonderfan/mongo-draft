@@ -2,6 +2,12 @@
 
 ## mongo manual
 
+### install mongodb
+
+```
+sudo apt-get install mongodb
+```
+
 ### start the mongodb
 
 ```bash

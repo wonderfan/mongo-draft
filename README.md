@@ -52,3 +52,9 @@ db.createUser(
    }
 )
 ```
+
+### CURD
+
+```
+db.collection.deleteMany(filter);
+```

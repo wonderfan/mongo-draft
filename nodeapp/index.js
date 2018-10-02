@@ -29,6 +29,7 @@ var user = new User();
 user.uuid = uuid();
 user.name = 'jiahe';
 user.password = "password";
+user.role_id = mongoose.Types.ObjectId();
 user.save(function(err,user){
     console.log(user);
 });

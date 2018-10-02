@@ -11,26 +11,48 @@ const options = {
   socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
   family: 4 // Use IPv4, skip trying IPv6
 };
-global.db = mongoose.connect('mongodb://admin:password@127.0.0.1:27017/zigdb',options);
-const Schema = mongoose.Schema;
 
-const Chain = new Schema({
-  name: String,
-  type: String
+const uuid = require("uuid/v1");
+mongoose.set('debug', true);
+mongoose.connect("mongodb://127.0.0.1:27017/test",options);
+
+var userSchema = new mongoose.Schema({
+    uuid: String,
+    name: String,
+    password: String
 });
 
-const ChainModel = mongoose.model('Chain',Chain);
+const User = mongoose.model("User",userSchema,"user");
 
 /*
-var chain = new ChainModel({name:"hyperledger",type:"private"});
-chain.save(function (err) {
-  if (err) return console.error(err);
+var user = new User();
+user.uuid = uuid();
+user.name = 'jiahe';
+user.password = "password";
+user.save(function(err,user){
+    console.log(user);
 });
 */
 
-ChainModel.find({},function (err, docs) {
-    if (err) return console.error(err);
+User.find({uuid:'d3ffc450-c5e4-11e8-a580-bbd1f506eb0a'},function(err,docs){
     console.log(docs);
-    mongoose.disconnect();
 });
+
+User.findOne({uuid:'d3ffc450-c5e4-11e8-a580-bbd1f506eb0a'},function(err,docs){
+    console.log(docs);
+});
+
+
+setTimeout(function() {
+    console.log("close the connection");
+    mongoose.disconnect();   
+}, 2000);
+
+
+
+
+
+
+
+
 

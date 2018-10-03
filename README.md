@@ -58,3 +58,9 @@ db.createUser(
 ```
 db.collection.remove(filter);
 ```
+
+### Repair
+
+```
+mongod --dbpath /data/db --repair
+```

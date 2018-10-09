@@ -57,6 +57,7 @@ db.createUser(
 
 ```
 db.collection.remove(filter);
+db.consortium.update({},{$set:{synced:false}});
 ```
 
 ### Repair
